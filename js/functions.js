@@ -21,7 +21,7 @@ function click_filter_element(event) {
 
   const filter_dom = event.currentTarget;
   filter_dom.classList.toggle('selected');
-
+  console.log(filter_dom);
   update_programmes();
 }
 
@@ -234,6 +234,8 @@ function update_programmes() {
       NO RETURN VALUE
 
   */
+  let array_with_programmes = read_filters()
+  array_each(array_with_programmes, create_programme)
 
 }
 
