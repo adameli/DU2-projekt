@@ -1,7 +1,7 @@
 
 // G
 // CODE According to specification
-function click_filter_element (event) {
+function click_filter_element(event) {
 
   /*
     ARGUMENTS
@@ -18,13 +18,13 @@ function click_filter_element (event) {
     NO RETURN VALUE
 
   */
-  
+
 }
 
 
 // G
 // CODE according to specification
-function create_filter_element (data) {
+function create_filter_element(data) {
 
   /*
     ARGUMENTS
@@ -46,12 +46,25 @@ function create_filter_element (data) {
       Returns a reference to the new dom-element
   */
 
+  const klass = data.class;
+  const textcontent = data.textContent;
+  const parent = data.parent;
+
+  const new_element = document.createElement("li")
+  new_element.classList.add(klass)
+  parent.append(new_element)
+  new_element.textContent = textcontent
+
+  new_element.addEventListener("click", click_filter_element)
+
+  return new_element
+
 }
 
 
 // VG
 // CODE according to specification
-function add_group_toggling (filter_container_dom) {
+function add_group_toggling(filter_container_dom) {
 
   /*
     ARGUMENT
@@ -67,13 +80,13 @@ function add_group_toggling (filter_container_dom) {
     NO RETURN VALUE
 
   */
-  
+
 }
 
 
 // VG
 // CODE according to specifications
-function toggle_cities (event) {
+function toggle_cities(event) {
 
   /*
 
@@ -95,27 +108,27 @@ function toggle_cities (event) {
 // WRITE SPECIFICATION
 // ATTENTION: You need to write the specification of all three functions:
 //            create_countries_cities_filters, create_country and create_city
-function create_countries_cities_filters () {
-  function create_country (country) {
+function create_countries_cities_filters() {
+  function create_country(country) {
     const dom = document.createElement("div");
     dom.classList.add("country");
     dom.classList.add("filter_container");
     dom.id = "country_" + country.id;
     document.querySelector("#country_filter > ul").append(dom);
-    
+
     dom.innerHTML = `
       <h1>${country.name}</h1>
       <ul class="filter_list"></ul>
     `;
-    
+
     const cities = array_filter(CITIES, test_function);
-    function test_function (city) {
+    function test_function(city) {
       return city.countryID === country.id;
     }
 
     array_each(cities, create_city);
   }
-  function create_city (city) {
+  function create_city(city) {
 
     const dom = create_filter_element({
       parent: document.querySelector(`#country_${city.countryID} > ul`),
@@ -123,6 +136,7 @@ function create_countries_cities_filters () {
       textContent: city.name,
     });
     dom.dataset.id = city.id;
+
 
   }
 
@@ -134,8 +148,8 @@ function create_countries_cities_filters () {
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-function create_levels_filter () {
-  function create_level (level) {
+function create_levels_filter() {
+  function create_level(level) {
     const dom = create_filter_element({
       parent: document.querySelector("#level_filter > ul"),
       class: "selected",
@@ -146,8 +160,8 @@ function create_levels_filter () {
   array_each(LEVELS, create_level);
 }
 // Create Subjects Filter
-function create_subjects_filter () {
-  function create_subject (subject) {
+function create_subjects_filter() {
+  function create_subject(subject) {
     const dom = create_filter_element({
       parent: document.querySelector("#subject_filter > ul"),
       class: "selected",
@@ -158,8 +172,8 @@ function create_subjects_filter () {
   array_each(SUBJECTS, create_subject);
 }
 // Create Search Field
-function create_language_filter () {
-  function create_element (data) {
+function create_language_filter() {
+  function create_element(data) {
     const dom = create_filter_element({
       parent: document.querySelector("#language_filter > ul"),
       class: "selected",
@@ -173,8 +187,8 @@ function create_language_filter () {
 
 // G / VG (see details in specification)
 // CODE according to specifications
-function create_programme (programme) {
-  
+function create_programme(programme) {
+
   /*
 
     ARGUMENT
@@ -194,14 +208,14 @@ function create_programme (programme) {
 
     NO RETURN VALUE
 
-  */  
+  */
 
 }
 
 
 // G
 // CODE according to the specification
-function update_programmes () {
+function update_programmes() {
 
   /*
       NO ARGUMENTS
@@ -227,12 +241,12 @@ function update_programmes () {
 
 // Optional VG: Which parts of the function's code could be abstracted?
 //              Implement it
-function read_filters () {
-  
+function read_filters() {
+
   const city_selected_dom = document.querySelectorAll("#country_filter li.selected");
 
   const city_id_selected = [];
-  function callback_add_cityID (dom_element) {
+  function callback_add_cityID(dom_element) {
     const id_as_integer = parseInt(dom_element.dataset.id);
     city_id_selected.push(id_as_integer);
   }
@@ -250,7 +264,7 @@ function read_filters () {
   }
 
   let programmes = [];
-  function callback_add_programmes (university) {
+  function callback_add_programmes(university) {
     const university_id = university.id;
     for (let i = 0; i < PROGRAMMES.length; i++) {
       const programme = PROGRAMMES[i];
@@ -265,13 +279,13 @@ function read_filters () {
 
   const level_selected_dom = document.querySelectorAll("#level_filter li.selected");
   const level_id_selected = [];
-  function callback_add_levelID (dom_element) {
+  function callback_add_levelID(dom_element) {
     const id_as_integer = parseInt(dom_element.dataset.id);
     level_id_selected.push(id_as_integer);
   }
   array_each(level_selected_dom, callback_add_levelID);
 
-  function test_function_level (programme) {
+  function test_function_level(programme) {
     return level_id_selected.includes(programme.levelID);
   }
   programmes = array_filter(programmes, test_function_level);
@@ -280,7 +294,7 @@ function read_filters () {
 
   const language_selected_dom = document.querySelectorAll("#language_filter li.selected");
   const language_id_selected = [];
-  function callback_add_languageID (dom_element) {
+  function callback_add_languageID(dom_element) {
     const id_as_integer = parseInt(dom_element.dataset.id);
     language_id_selected.push(id_as_integer);
   }
@@ -288,7 +302,7 @@ function read_filters () {
 
 
 
-  function test_function_language (programme) {
+  function test_function_language(programme) {
     return language_id_selected.includes(programme.languageID);
   }
   programmes = array_filter(programmes, test_function_language);
@@ -297,7 +311,7 @@ function read_filters () {
 
   const subject_selected_dom = document.querySelectorAll("#subject_filter li.selected");
   const subject_id_selected = [];
-  function callback_add_subjectID (dom_element) {
+  function callback_add_subjectID(dom_element) {
     const id_as_integer = parseInt(dom_element.dataset.id);
     subject_id_selected.push(id_as_integer);
   }
@@ -305,7 +319,7 @@ function read_filters () {
 
 
 
-  function test_function_subject (programme) {
+  function test_function_subject(programme) {
     return subject_id_selected.includes(programme.subjectID);
   }
   programmes = array_filter(programmes, test_function_subject);
@@ -314,7 +328,7 @@ function read_filters () {
 
   const search_string = document.querySelector("#search_field input").value;
   if (search_string !== "") {
-    function test_function (programme) {
+    function test_function(programme) {
       return programme.name.includes(search_string);
     }
     programmes = array_filter(programmes, test_function);
