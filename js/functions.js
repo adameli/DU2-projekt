@@ -21,7 +21,7 @@ function click_filter_element(event) {
 
   const filter_dom = event.currentTarget;
   filter_dom.classList.toggle('selected');
-  console.log(filter_dom);
+  // console.log(filter_dom);
   update_programmes();
 }
 
@@ -55,7 +55,7 @@ function create_filter_element(data) {
   const parent = data.parent;
 
   const new_element = document.createElement("li")
-  new_element.classList.add(klass)
+  // new_element.classList.add(klass)
   parent.append(new_element)
   new_element.textContent = textcontent
 
@@ -213,6 +213,19 @@ function create_programme(programme) {
     NO RETURN VALUE
 
   */
+
+  // console.log(programme);
+  const program_dom = document.createElement("li")
+  const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
+  program_dom.innerHTML = `
+      <li>
+        <div class="programme"><div> <h6>${programme.name}</h6> <br> ${programme.name} <br> ${programme.name} <br> ${programme.name} </div></div>
+        <div class="more_info"></div>
+        <div class="bottom_programme">madrid</div>
+      </li>
+    `
+
+
 
 }
 
