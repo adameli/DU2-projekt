@@ -247,6 +247,14 @@ function update_programmes() {
       NO RETURN VALUE
 
   */
+  let array_with_programmes = read_filters()
+  document.querySelector("#programmes > ul").innerHTML = ""
+  let text = document.querySelector("#programmes p")
+
+  if (array_with_programmes.length !== 0) {
+    array_each(array_with_programmes, create_programme)
+    text.innerHTML = ""
+  }
 
 }
 
