@@ -213,20 +213,44 @@ function create_programme(programme) {
     NO RETURN VALUE
 
   */
+  let programe_languages = get_programme_info(LANGUAGES, programme.languageID)
+  let programe_subject = get_programme_info(SUBJECTS, programme.subjectID)
+  let programe_level = get_programme_info(LEVELS, programme.levelID)
+  let programe_university = get_programme_info(UNIVERSITIES, programme.universityID)
+  let programe_city = get_programme_city(CITIES)
+  let programe_country = get_programme_country(COUNTRIES)
+
+  function get_programme_info(array, programID) {
+    return array_find(array, test_programme_info)
+    function test_programme_info(info_objekt) {
+      return programID === info_objekt.id
+    }
+  }
+  function get_programme_city(array) {
+    let university = get_programme_info(UNIVERSITIES, programme.universityID)
+    return array_find(array, test_function)
+    function test_function(city_objekt) {
+      return university.cityID === city_objekt.id
+    }
+  }
+  function get_programme_country(array) {
+    let city = get_programme_city(CITIES)
+    return array_find(array, test_function)
+    function test_function(country_objekt) {
+      return city.countryID === country_objekt.id
+    }
+  }
 
   // console.log(programme);
   const program_dom = document.createElement("li")
+  program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
   program_dom.innerHTML = `
-      <li>
-        <div class="programme"><div> <h6>${programme.name}</h6> <br> ${programme.name} <br> ${programme.name} <br> ${programme.name} </div></div>
+        <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
-        <div class="bottom_programme">madrid</div>
-      </li>
+        <div class="bottom_programme programme">${programe_city.name}</div>
+     
     `
-
-
-
 }
 
 
