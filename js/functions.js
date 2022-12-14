@@ -241,9 +241,7 @@ function create_programme(programme) {
     }
   }
 
-
-
-  console.log(programme);
+  // console.log(programme);
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
@@ -253,9 +251,6 @@ function create_programme(programme) {
         <div class="bottom_programme programme">${programe_city.name}</div>
      
     `
-
-
-
 }
 
 
