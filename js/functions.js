@@ -230,7 +230,7 @@ function create_programme(programme) {
     let university = get_programme_info(UNIVERSITIES, programme.universityID)
     return array_find(array, test_function)
     function test_function(city_objekt) {
-      return university.id === city_objekt.id
+      return university.cityID === city_objekt.id
     }
   }
   function get_programme_country(array) {
@@ -245,13 +245,13 @@ function create_programme(programme) {
 
   console.log(programme);
   const program_dom = document.createElement("li")
+  program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
   program_dom.innerHTML = `
-      <li>
-        <div class="programme"><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
+        <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
-        <div class="bottom_programme">${programe_city.name}</div>
-      </li>
+        <div class="bottom_programme programme">${programe_city.name}</div>
+     
     `
 
 
