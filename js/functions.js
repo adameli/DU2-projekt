@@ -202,42 +202,60 @@ function create_countries_cities_filters() {
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-function create_levels_filter() {
-  function create_level(level) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#level_filter > ul"),
-      class: "selected",
-      textContent: level.name,
-    });
-    dom.dataset.id = level.id;
-  }
-  array_each(LEVELS, create_level);
-}
-// Create Subjects Filter
-function create_subjects_filter() {
-  function create_subject(subject) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#subject_filter > ul"),
-      class: "selected",
-      textContent: subject.name,
-    });
-    dom.dataset.id = subject.id;
-  }
-  array_each(SUBJECTS, create_subject);
-}
-// Create Search Field
-function create_language_filter() {
-  function create_element(data) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#language_filter > ul"),
-      class: "selected",
-      textContent: data.name,
-    });
-    dom.dataset.id = data.id;
-  }
-  array_each(LANGUAGES, create_element);
-}
+// function create_levels_filter() {
+//   function create_level(level) {
+//     const dom = create_filter_element({
+//       parent: document.querySelector("#level_filter > ul"),
+//       class: "selected",
+//       textContent: level.name,
+//     });
+//     dom.dataset.id = level.id;
+//   }
+//   array_each(LEVELS, create_level);
+// }
+// // Create Subjects Filter
+// function create_subjects_filter() {
+//   function create_subject(subject) {
+//     const dom = create_filter_element({
+//       parent: document.querySelector("#subject_filter > ul"),
+//       class: "selected",
+//       textContent: subject.name,
+//     });
+//     dom.dataset.id = subject.id;
+//   }
+//   array_each(SUBJECTS, create_subject);
+// }
+// // Create Search Field
+// function create_language_filter() {
+//   function create_element(data) {
+//     const dom = create_filter_element({
+//       parent: document.querySelector("#language_filter > ul"),
+//       class: "selected",
+//       textContent: data.name,
+//     });
+//     dom.dataset.id = data.id;
+//   }
+//   array_each(LANGUAGES, create_element);
+// }
 
+function create_diff_filter_element() {
+  const array_of_filters = [LEVELS, SUBJECTS, LANGUAGES]
+  const id_name = ['level', 'subject', 'language']
+  function create_filter(object) {
+    const dom = create_filter_element({
+      parent: document.querySelector(`#${id_name[i]}_filter > ul`),
+      class: "selected",
+      textContent: object.name,
+    });
+    dom.dataset.id = object.id;
+  }
+  let i = 0
+  while (i < array_of_filters.length) {
+    array_each(array_of_filters[i], create_filter)
+
+    i++
+  }
+}
 
 // G / VG (see details in specification)
 // CODE according to specifications

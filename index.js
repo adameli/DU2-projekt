@@ -15,9 +15,11 @@
 
 
 // Create Filter Elements
-create_levels_filter();
-create_subjects_filter();
-create_language_filter();
+// create_levels_filter();
+// create_subjects_filter();
+// create_language_filter();
+
+create_diff_filter_element()
 create_countries_cities_filters();
 
 // Add Interaction of search field button
