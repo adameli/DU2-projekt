@@ -55,7 +55,7 @@ function create_filter_element(data) {
   const parent = data.parent;
 
   const new_element = document.createElement("li")
-  // new_element.classList.add(klass)
+  new_element.classList.add(klass)
   parent.append(new_element)
   new_element.textContent = textcontent
 
