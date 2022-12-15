@@ -241,17 +241,19 @@ function create_programme(programme) {
     }
   }
 
+
+
   // console.log(programme);
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
   program_dom.style.backgroundImage = `url('../media/geo_images/${programe_city.imagesNormal[0]}')`
   program_dom.innerHTML = `
-        <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
+      <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
-        <div class="bottom_programme programme">${programe_city.name}</div>
-     
-    `
+        <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
+
+        `
 }
 
 
@@ -261,16 +263,16 @@ function update_programmes() {
 
   /*
       NO ARGUMENTS
-
+ 
       SIDE EFFECTS
         This function updates the programmes shown on the page according to
         the current filter status (which filter elements are selected / unselected).
         It uses the function read_filters to know which programmes need to be included.
-
+ 
         VG: The top images (header) need to be updated here
-
+ 
       NO RETURN VALUE
-
+ 
   */
   let array_with_programmes = read_filters()
   document.querySelector("#programmes > ul").innerHTML = ""
