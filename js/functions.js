@@ -239,6 +239,19 @@ function create_countries_cities_filters() {
 // }
 
 function create_diff_filter_element() {
+
+  /*
+
+  ARGUMENT
+    funktionen tar inte emot något argument
+
+  SIDE-EFFECTS
+    Denna function skapar filter-element för respektive array (LEVELS, SUBJECTS, LANGUAGES) som finns i array_of_filters
+    För varje objekt i arraeyrna anropas create_filter_element som skapar och appendar elementet till webbsidan
+    
+  NO RETURN VALUE
+
+*/
   const array_of_filters = [LEVELS, SUBJECTS, LANGUAGES]
   const id_name = ['level', 'subject', 'language']
   function create_filter(object) {
