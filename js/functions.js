@@ -113,7 +113,40 @@ function toggle_cities(event) {
 // ATTENTION: You need to write the specification of all three functions:
 //            create_countries_cities_filters, create_country and create_city
 function create_countries_cities_filters() {
+
+  /*
+    ARGUMENTS
+      Funktionen tar inte emot några argument
+
+    SIDE-EFFECTS
+      Anropar funktionen array_each med en array och en funktion som argument
+
+    RETURN VALUE
+      Returnerar undefined
+*/
+
   function create_country(country) {
+
+    /*
+      ARGUMENTS
+        Funktionen tar emot ett argument:
+        country (objekt): en av de objekten från COUNTRIES
+  
+        Ingen kontroll görs
+  
+      SIDE-EFFECTS
+        Funktionen: skapar ett dom element med tagen "div"
+        Ger dom elementet två stycken klasser 
+        Ger dom elementet ett id 
+        Appendar dom till ett element
+        Skapar dom elements innerHTML, ett <h1> med objektets namn och ett <ul> element med en klass
+        Skapar en nya "array" (cities) med de städerna som har likadant id som objektets id
+        Anropar en functionen array_each med 'cities' och funktionen create_city som argument
+  
+      RETURN VALUE
+        Returnerar undefined
+  
+    */
     const dom = document.createElement("div");
     dom.classList.add("country");
     dom.classList.add("filter_container");
@@ -133,6 +166,23 @@ function create_countries_cities_filters() {
     array_each(cities, create_city);
   }
   function create_city(city) {
+
+    /*
+      ARGUMENTS
+        Funktionen tar emot ett argument:
+        city (objekt): en av de objekten från 'cities'
+
+        Ingen kontroll görs
+
+      SIDE-EFFECTS
+        Funktionen skapar en variabel "dom"
+        "dom" inehåller ett nytt element som skapas med hjälp av funktionen create_filter_element
+        "doms" datasets id får ett nytt värde som är "city"s (objektet) id 
+
+      RETURN VALUE
+        Returnerar undefined 
+
+    */
 
     const dom = create_filter_element({
       parent: document.querySelector(`#country_${city.countryID} > ul`),
@@ -241,7 +291,7 @@ function create_programme(programme) {
     }
   }
 
-  // console.log(programme);
+
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
@@ -249,7 +299,6 @@ function create_programme(programme) {
         <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
         <div class="bottom_programme programme">${programe_city.name}</div>
-     
     `
 }
 
