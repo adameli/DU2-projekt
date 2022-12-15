@@ -329,7 +329,7 @@ function create_programme(programme) {
   program_dom.innerHTML = `
         <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
-        <div class="bottom_programme programme">${programe_city.name}</div>
+        <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
     `
 }
 
@@ -371,6 +371,26 @@ function update_programmes() {
 // Optional VG: Which parts of the function's code could be abstracted?
 //              Implement it
 function read_filters() {
+
+  /*
+        ARGUMENTS
+          Funcktionen tar inte emot några argument
+  
+        SIDE EFFECTS
+          Funktionen går igenom och filtrerar de elementen som är selecterade
+          city_id_selected består av de städerna som är selecterade, där varje index är varje stads id
+          För varje element i city_id_selected loppas arrayen UNIVERSITES och kontrollerar om elementets siffra är likadan med något av UNIVERISTES objekts city-id
+          om Sant pushas de objektet in i en universities, om Falskt fortsätter loppen leta.
+          Därefter loppas arrayen PROGRAMMES igenom och för varje programme-objekt kontrolleras det om något av objektens ID i universites är likadant med programme-objektets universitesID
+          om Sant pushas de objektet in i arrayen 'programmes'
+          Därefter kontrollerar level, subjekt och languaes utifrån vad för objekt som finns i arrayen 'programmes'
+  
+          Det finns även en sökruta som filtrerar utefter användarens input value, input valuet svarar endast på vad som finns i programmets namn
+  
+        RETURN VALUE
+          Det returneras en array med de element/objekt som har filtrerats utefter vilka filter_element är selecterade
+  
+    */
 
   const city_selected_dom = document.querySelectorAll("#country_filter li.selected");
 
