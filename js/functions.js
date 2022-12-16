@@ -19,8 +19,10 @@ function click_filter_element(event) {
 
   */
 
+
   const filter_dom = event.currentTarget;
   filter_dom.classList.toggle('selected');
+
   // console.log(filter_dom);
   update_programmes();
 }
@@ -84,7 +86,23 @@ function add_group_toggling(filter_container_dom) {
     NO RETURN VALUE
 
   */
-
+  filter_container_dom.addEventListener("click", toggle_filter_elements)
+  function toggle_filter_elements(event) {
+    let filter_elements = document.querySelectorAll(`#${event.currentTarget.id} .filter_list > li`)
+    if (filter_elements[0].className === "selected") {
+      for (let element of filter_elements) {
+        element.classList.remove("selected")
+      }
+      update_programmes()
+    } else {
+      for (let element of filter_elements) {
+        element.classList.add("selected")
+      }
+      update_programmes()
+    }
+    console.log(filter_elements[0].className);
+    // console.log(event);
+  }
 }
 
 

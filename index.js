@@ -24,7 +24,6 @@ create_countries_cities_filters();
 
 // Add Interaction of search field button
 document.querySelector("#search_field button").addEventListener("click", update_programmes);
-
 // Initialise programmes list by calling relevant function
 update_programmes();
 
@@ -33,6 +32,8 @@ update_programmes();
 // Add Interaction of filter containers (select-deselect all filters in the container)
 // Example: Click anywhere on the language-filter-container and all the language filters
 // (spanska, svenska, engelska, franska) will toggle.
+let filter_containers = document.querySelectorAll("#others_filter > .filter_container")
+array_each(filter_containers, add_group_toggling)
 
 
 // VG
