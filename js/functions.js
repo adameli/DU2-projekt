@@ -18,7 +18,7 @@ function click_filter_element(event) {
     NO RETURN VALUE
 
   */
-
+  event.stopPropagation()
   const filter_dom = event.currentTarget;
   filter_dom.classList.toggle('selected');
   // console.log(filter_dom);
