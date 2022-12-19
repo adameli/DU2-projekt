@@ -129,6 +129,18 @@ function toggle_cities(event) {
 
   */
 
+  let element_filter = document.querySelectorAll(".country .filter_list > li");
+  if (element_filter[0].className === "selected") {
+    for (let element of element_filter) {
+      element.classList.remove("selected")
+    }
+    update_programmes()
+  } else {
+    for (let element of element_filter) {
+      element.classList.add("selected")
+    }
+    update_programmes()
+  }
 }
 
 
