@@ -88,22 +88,14 @@ function add_group_toggling(filter_container_dom) {
   filter_container_dom.addEventListener("click", toggle_filter_elements)
   function toggle_filter_elements(event) {
     let filter_elements = document.querySelectorAll(`#${event.currentTarget.id} .filter_list > li`)
-    for (let element of filter_elements) {
-      if (element.className === "selected") {
-        element.classList.remove("selected")
-      } else {
-        element.classList.add("selected")
-      }
-    }
-
     if (filter_elements[0].className === "selected") {
       for (let element of filter_elements) {
-        element.classList.add("selected")
+        element.classList.remove("selected")
       }
       update_programmes()
     } else {
       for (let element of filter_elements) {
-        element.classList.remove("selected")
+        element.classList.add("selected")
       }
       update_programmes()
     }
@@ -116,17 +108,17 @@ function add_group_toggling(filter_container_dom) {
 function toggle_cities(event) {
 
   /*
-
+ 
     ARGUMENTS
       This function does not take any arguments
-
+ 
     SIDE EFFECTS
       This function checks the state of the first city-filter-element (Madrid).
       If it is selected then it de-selects ALL city-filter-elements
       If it is de-selected then it selects ALL city-filter-elements 
-
+ 
     NO RETURN VALUE
-
+ 
   */
 
   let element_filter = document.querySelectorAll(".country .filter_list > li");
@@ -152,10 +144,10 @@ function create_countries_cities_filters() {
   /*
     ARGUMENTS
       Funktionen tar inte emot några argument
-
+ 
     SIDE-EFFECTS
       Anropar funktionen array_each med en array och en funktion som argument
-
+ 
     RETURN VALUE
       Returnerar undefined
 */
@@ -206,17 +198,17 @@ function create_countries_cities_filters() {
       ARGUMENTS
         Funktionen tar emot ett argument:
         city (objekt): en av de objekten från 'cities'
-
+ 
         Ingen kontroll görs
-
+ 
       SIDE-EFFECTS
         Funktionen skapar en variabel "dom"
         "dom" inehåller ett nytt element som skapas med hjälp av funktionen create_filter_element
         "doms" datasets id får ett nytt värde som är "city"s (objektet) id 
-
+ 
       RETURN VALUE
         Returnerar undefined 
-
+ 
     */
 
     const dom = create_filter_element({
@@ -276,16 +268,16 @@ function create_language_filter() {
 function create_diff_filter_element() {
 
   /*
-
+ 
   ARGUMENT
     funktionen tar inte emot något argument
-
+ 
   SIDE-EFFECTS
     Denna function skapar filter-element för respektive array (LEVELS, SUBJECTS, LANGUAGES) som finns i array_of_filters
     För varje objekt i arraeyrna anropas create_filter_element som skapar och appendar elementet till webbsidan
     
   NO RETURN VALUE
-
+ 
 */
   const array_of_filters = [LEVELS, SUBJECTS, LANGUAGES]
   const id_name = ['level', 'subject', 'language']
@@ -310,10 +302,10 @@ function create_diff_filter_element() {
 function create_programme(programme) {
 
   /*
-
+ 
     ARGUMENT
       programme (object): One of the objects from PROGRAMMES
-
+ 
     SIDE-EFFECTS
       This function creates the HTML-element that contains all the information
       about one programme, as seen in the video / image.
@@ -321,13 +313,13 @@ function create_programme(programme) {
       VG: The background image is a random image from among the images of the city
           in which the programme is (via the university)
       G:  No background image required.
-
-
+ 
+ 
       VG: The "see more" interaction must be included.
       G:  The "see more" element is not required. And that information needs not be in place.
-
+ 
     NO RETURN VALUE
-
+ 
   */
   let programe_languages = get_programme_info(LANGUAGES, programme.languageID)
   let programe_subject = get_programme_info(SUBJECTS, programme.subjectID)
@@ -375,16 +367,16 @@ function update_programmes() {
 
   /*
       NO ARGUMENTS
-
+ 
       SIDE EFFECTS
         This function updates the programmes shown on the page according to
         the current filter status (which filter elements are selected / unselected).
         It uses the function read_filters to know which programmes need to be included.
-
+ 
         VG: The top images (header) need to be updated here
-
+ 
       NO RETURN VALUE
-
+ 
   */
   let array_with_programmes = read_filters()
   document.querySelector("#programmes > ul").innerHTML = ""
