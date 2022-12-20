@@ -247,7 +247,8 @@ function create_programme(programme) {
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
-  program_dom.style.backgroundImage = `url('./media/geo_images/${programe_city.imagesNormal[0]}')`
+  let array_of_images = programe_city.imagesNormal;
+  program_dom.style.backgroundImage = `url('./media/geo_images/${array_random_element(array_of_images)}')`
   program_dom.innerHTML = `
       <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info"></div>
