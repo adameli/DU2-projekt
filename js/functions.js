@@ -351,7 +351,7 @@ function create_programme(programme) {
 
 
 
-  // console.log(programme);
+
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
@@ -389,6 +389,18 @@ function update_programmes() {
   if (array_with_programmes.length !== 0) {
     array_each(array_with_programmes, create_programme)
     text.innerHTML = ""
+  }
+
+  let array_of_country_img = []
+  for (let i = 0; i < COUNTRIES.length; i++) {
+    for (let image of COUNTRIES[i].imagesNormal) {
+      array_of_country_img.push(image)
+    }
+  }
+
+  const header_divs = document.querySelectorAll("#top_images > div")
+  for (let top_img of header_divs) {
+    top_img.style.backgroundImage = `url('./media/geo_images/${array_random_element(array_of_country_img)}')`
   }
 }
 

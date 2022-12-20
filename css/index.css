@@ -133,15 +133,3 @@ body {}
 .display_none {
   display: none;
 }
-
-#top_images div:nth-child(1) {
-  background-image: url("../media/geo_images/stockholm_normal_2.jpg");
-}
-
-#top_images div:nth-child(2) {
-  background-image: url("../media/geo_images/san_francisco_normal_1.jpg");
-}
-
-#top_images div:nth-child(3) {
-  background-image: url("../media/geo_images/sidney_normal_1.jpg");
-}
