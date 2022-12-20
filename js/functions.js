@@ -165,7 +165,7 @@ function create_countries_cities_filters() {
         Funktionen: skapar ett dom element med tagen "div"
         Ger dom elementet två stycken klasser 
         Ger dom elementet ett id 
-        Appendar dom till ett element
+        Appendar dom till ett element(en container från html)
         Skapar dom elements innerHTML, ett <h1> med objektets namn och ett <ul> element med en klass
         Skapar en nya "array" (cities) med de städerna som har likadant id som objektets id
         Anropar en functionen array_each med 'cities' och funktionen create_city som argument
@@ -353,11 +353,12 @@ function create_programme(programme) {
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
+  program_dom.style.backgroundImage = "url(./media/geo_images/madrid_normal_1.jpg)"
   program_dom.innerHTML = `
-        <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
-        <div class="more_info"></div>
-        <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
-    `
+  <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
+  <div class="more_info"></div>
+  <div class="bottom_programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
+  `
 }
 
 
@@ -386,7 +387,6 @@ function update_programmes() {
     array_each(array_with_programmes, create_programme)
     text.innerHTML = ""
   }
-
 }
 
 
