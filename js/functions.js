@@ -349,9 +349,6 @@ function create_programme(programme) {
     }
   }
 
-
-
-
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
