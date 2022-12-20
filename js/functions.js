@@ -243,6 +243,18 @@ function update_programmes() {
     text.innerHTML = ""
   }
 
+  let array_of_country_img = []
+  for (let i = 0; i < COUNTRIES.length; i++) {
+    for (let image of COUNTRIES[i].imagesNormal) {
+      array_of_country_img.push(image)
+    }
+  }
+
+  const header_divs = document.querySelectorAll("#top_images > div")
+  for (let top_img of header_divs) {
+    top_img.style.backgroundImage = `url('./media/geo_images/${array_random_element(array_of_country_img)}')`
+  }
+
 }
 
 
