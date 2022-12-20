@@ -242,7 +242,8 @@ function create_programme(programme) {
   }
 
 
-
+  let array = PROGRAMMES[0].entryGrades
+  console.log(array_average(array));
   // console.log(programme);
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
@@ -255,6 +256,16 @@ function create_programme(programme) {
         <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
 
         `
+  const show_more_button = document.querySelector(".more_info")
+  show_more_button.addEventListener("click", action)
+  function action(event) {
+    console.log(event.currentTarget);
+    event.innerHTML = `
+      <div>Average entry grade: </div>    
+      <div>Succsess rate:</div>    
+      <div>Exchange ratio:</div>    
+      `
+  }
 }
 
 
