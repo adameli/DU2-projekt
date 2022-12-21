@@ -360,7 +360,7 @@ function create_programme(programme) {
   program_dom.innerHTML = `
       <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info" id="programme_${programme.id}"></div>
-        <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
+        <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun} (${percenter(programe_city.sun, 365)}%)</div>
 
         `
 
