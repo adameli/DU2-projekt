@@ -13,7 +13,6 @@
 */
 
 
-
 // Create Filter Elements
 create_levels_filter();
 create_subjects_filter();
