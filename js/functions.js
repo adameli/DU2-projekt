@@ -1,6 +1,4 @@
 
-// G
-// CODE According to specification
 function click_filter_element(event) {
 
   /*
@@ -22,13 +20,11 @@ function click_filter_element(event) {
   const filter_dom = event.currentTarget;
   filter_dom.classList.toggle('selected');
 
-  // console.log(filter_dom);
   update_programmes();
 }
 
 
-// G
-// CODE according to specification
+
 function create_filter_element(data) {
 
   /*
@@ -67,8 +63,7 @@ function create_filter_element(data) {
 }
 
 
-// VG
-// CODE according to specification
+
 function add_group_toggling(filter_container_dom) {
 
   /*
@@ -103,8 +98,6 @@ function add_group_toggling(filter_container_dom) {
 }
 
 
-// VG
-// CODE according to specifications
 function toggle_cities(event) {
 
   /*
@@ -136,9 +129,6 @@ function toggle_cities(event) {
 }
 
 
-// WRITE SPECIFICATION
-// ATTENTION: You need to write the specification of all three functions:
-//            create_countries_cities_filters, create_country and create_city
 function create_countries_cities_filters() {
 
   /*
@@ -225,46 +215,6 @@ function create_countries_cities_filters() {
 }
 
 
-// G
-// ABSTRACT AND WRITE SPECIFICATION
-//    As you can see, all three functions below do basically the same thing.
-//    Abstract them to one function, and write the specification of that function.
-function create_levels_filter() {
-  function create_level(level) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#level_filter > ul"),
-      class: "selected",
-      textContent: level.name,
-    });
-    dom.dataset.id = level.id;
-  }
-  array_each(LEVELS, create_level);
-}
-// Create Subjects Filter
-function create_subjects_filter() {
-  function create_subject(subject) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#subject_filter > ul"),
-      class: "selected",
-      textContent: subject.name,
-    });
-    dom.dataset.id = subject.id;
-  }
-  array_each(SUBJECTS, create_subject);
-}
-// Create Search Field
-function create_language_filter() {
-  function create_element(data) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#language_filter > ul"),
-      class: "selected",
-      textContent: data.name,
-    });
-    dom.dataset.id = data.id;
-  }
-  array_each(LANGUAGES, create_element);
-}
-
 function create_diff_filter_element() {
 
   /*
@@ -297,8 +247,7 @@ function create_diff_filter_element() {
   }
 }
 
-// G / VG (see details in specification)
-// CODE according to specifications
+
 function create_programme(programme) {
 
   /*
@@ -349,8 +298,6 @@ function create_programme(programme) {
     }
   }
 
-
-
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
 
@@ -361,9 +308,7 @@ function create_programme(programme) {
       <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
         <div class="more_info" id="programme_${programme.id}"></div>
         <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun} (${percenter(programe_city.sun, 365)}%)</div>
-
         `
-
   const show_more_button = document.querySelector(`#programme_${programme.id}`)
   show_more_button.addEventListener("click", action)
   function action(event) {
@@ -379,8 +324,6 @@ function create_programme(programme) {
 }
 
 
-// G
-// CODE according to the specification
 function update_programmes() {
 
   /*
@@ -418,14 +361,6 @@ function update_programmes() {
   }
 }
 
-
-// G
-// WRITE SPECIFICATION
-// You must understand how this function works. There will be questions about it
-// in the code review (kodredovisning)
-
-// Optional VG: Which parts of the function's code could be abstracted?
-//              Implement it
 function read_filters() {
 
   /*
