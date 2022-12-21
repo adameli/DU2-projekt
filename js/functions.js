@@ -346,6 +346,8 @@ function update_programmes() {
   if (array_with_programmes.length !== 0) {
     array_each(array_with_programmes, create_programme)
     text.innerHTML = ""
+  } else {
+    text.innerHTML = "Inga program upfyller nuvarande filter."
   }
 
   let array_of_country_img = []
