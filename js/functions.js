@@ -242,11 +242,8 @@ function create_programme(programme) {
   }
 
 
-  let array = PROGRAMMES[0].entryGrades
-  // console.log(array_average(array));
-  // console.log(programme);
+
   const program_dom = document.createElement("li")
-  // program_dom.addEventListener("click", action)
   program_dom.classList.add('programme')
 
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
