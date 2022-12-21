@@ -37,7 +37,6 @@ button {
 }
 
 ul.filter_list>li:hover {
-  /* box-shadow: 0 0 calc( .4 * var(--basic_fSz)) black; */
   box-shadow: 0 0 2px black;
 
 }
