@@ -349,17 +349,33 @@ function create_programme(programme) {
     }
   }
 
+
+
   const program_dom = document.createElement("li")
   program_dom.classList.add('programme')
+
   const program_contianer = document.querySelector("#programmes > ul").append(program_dom);
   let array_of_images = programe_city.imagesNormal;
   program_dom.style.backgroundImage = `url('./media/geo_images/${array_random_element(array_of_images)}')`
   program_dom.innerHTML = `
       <div class=""><div> <b>${programme.name}</b> <br> ${programe_university.name} <br> ${programe_city.name}, ${programe_country.name} <br> ${programe_level.name}, ${programe_subject.name}, ${programe_languages.name} </div></div>
-        <div class="more_info"></div>
+        <div class="more_info" id="programme_${programme.id}"></div>
         <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun}</div>
 
         `
+
+  const show_more_button = document.querySelector(`#programme_${programme.id}`)
+  show_more_button.addEventListener("click", action)
+  function action(event) {
+    program_dom.classList.toggle('show_more')
+    event.currentTarget.innerHTML = `
+    <div class="extra_info">
+      <div>Average entry grade: ${array_average(programme.entryGrades)} </div>    
+      <div>Succsess rate: ${array_average(programme.successRate)}%</div>    
+      <div>Exchange ratio: ${programme.exchangeStudents}/${programme.localStudents}</div>    
+    </div>
+      `
+  }
 }
 
 
