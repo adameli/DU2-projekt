@@ -83,17 +83,16 @@ function add_group_toggling(filter_container_dom) {
   filter_container_dom.addEventListener("click", toggle_filter_elements)
   function toggle_filter_elements(event) {
     let filter_elements = document.querySelectorAll(`#${event.currentTarget.id} .filter_list > li`)
-    if (filter_elements[0].className === "selected") {
+    if (filter_elements[0].classList.contains("selected")) {
       for (let element of filter_elements) {
         element.classList.remove("selected")
       }
-      update_programmes()
     } else {
       for (let element of filter_elements) {
         element.classList.add("selected")
       }
-      update_programmes()
     }
+    update_programmes()
   }
 }
 
@@ -115,7 +114,7 @@ function toggle_cities(event) {
   */
 
   let element_filter = document.querySelectorAll(".country .filter_list > li");
-  if (element_filter[0].className === "selected") {
+  if (element_filter[0].classList.contains("selected")) {
     for (let element of element_filter) {
       element.classList.remove("selected")
     }
@@ -309,7 +308,8 @@ function create_programme(programme) {
         <div class="more_info" id="programme_${programme.id}"></div>
         <div class="bottom_programme programme">${programe_city.name}, sun-index: ${programe_city.sun} (${percenter(programe_city.sun, 365)}%)</div>
         `
-  const show_more_button = document.querySelector(`#programme_${programme.id}`)
+
+  const show_more_button = program_dom.querySelector(`.more_info`)
   show_more_button.addEventListener("click", action)
   function action(event) {
     program_dom.classList.toggle('show_more')
